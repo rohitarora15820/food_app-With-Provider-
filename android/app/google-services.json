@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629842451420",
+    "project_id": "flash-chat-e7882",
+    "storage_bucket": "flash-chat-e7882.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629842451420:android:f7ddb7f8a863d093d5cd19",
+        "android_client_info": {
+          "package_name": "com.example.provider_food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629842451420-kqtgb61cdh0vj311g55e1fp1bpp8na8c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzXz3b7qxJBe1b2IZx1goecrLEE50wTU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629842451420-kqtgb61cdh0vj311g55e1fp1bpp8na8c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
