@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_food_delivery/providers/product_provider.dart';
 import 'package:provider_food_delivery/screens/home_screen/drawer.dart';
 import 'package:provider_food_delivery/screens/home_screen/product_overview/product_overview.dart';
 import 'package:provider_food_delivery/screens/home_screen/single_product.dart';
@@ -16,8 +18,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  ProductProvider? productProvider;
+
+
+@override
+  void initState() {
+   productProvider= Provider.of(context,listen: false);
+    productProvider!.fetchHerbsProductData();
+
+    super.initState();
+   
+    
+
+  }
+
+  
+
   @override
   Widget build(BuildContext context) {
+    productProvider= Provider.of(context);
+
+       
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
       drawer: DrawerSide(),
@@ -46,13 +67,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CircleAvatar(
-              radius: 12,
-              backgroundColor: Color(0xffd4d181),
-              child: Icon(
-                Icons.shop,
-                size: 17,
-                color: Colors.black,
+            child: GestureDetector(
+              onTap: ()async{
+                print("data");
+
+              },
+              child: CircleAvatar(
+                radius: 12,
+                backgroundColor: Color(0xffd4d181),
+                child: Icon(
+                  Icons.shop,
+                  size: 17,
+                  color: Colors.black,
+                ),
               ),
             ),
           )
@@ -161,32 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SingleProduct(
-              onTap: (){
-                log("Product");
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProductOverview(
-                   productName: "Fresh Basil",
-              productImage: "https://m.media-amazon.com/images/I/51W8xfdp-iL.jpg",
-                )));
-              },
-              productName: "Fresh Basil",
-              productImage: "https://m.media-amazon.com/images/I/51W8xfdp-iL.jpg",
-              
-        ),
-           SingleProduct(
-              onTap: (){},
-              productName: "Fresh Basil",
-              productImage: "https://m.media-amazon.com/images/I/51W8xfdp-iL.jpg",
-              
-        ),
-           SingleProduct(
-              onTap: (){},
-              productName: "Fresh Basil",
-              productImage: "https://m.media-amazon.com/images/I/51W8xfdp-iL.jpg",
-              
-        ),
-            ],
+            children: productProvider!.getHerbsProductDataList.map((e) => null).toList() as List<Widget>,
           )
         ),
       
