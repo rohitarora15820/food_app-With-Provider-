@@ -64,11 +64,15 @@ class DrawerSide extends StatelessWidget {
               ],
             ),
           ),
-          listTile(icon: Icons.home_outlined, title: "Home"),
+          listTile(
+            icon: Icons.home_outlined,
+            title: "Home",
+            onTap: () => Navigator.pop(context),
+          ),
           listTile(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>const  ReviewCart(),
+                  builder: (context) => const ReviewCart(),
                 ));
               },
               icon: Icons.shop_outlined,
